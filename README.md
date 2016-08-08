@@ -36,8 +36,8 @@ Implement the domain logic of an auction platform with the following business ru
 
 ## Important
 
-1) Write only object-oriented code, ideally using a test-driven or test-first approach.
-2) Write unit tests that achieve 100% line coverage. Name tests so that the testdox output of PHPUnit shows an executable specification of all business rules. Make sure every test has suitable @covers annotations.
-3) Make sure application and domain logic are clearly separated. Do not write any persistence code, and do not write presentation code. We strongly suggest not to use any frameworks or libraries.
-4) It is not important to deliver all features. Focus on the features with the highest business value and implement them first. Make sure that you deliver a working solution with features that are fully done. Consider using version control to ensure that you do not deliver anything that is uncompleted.
-5) Only implement required features. Do not implement anything additional that has not been asked for.
+1. Write only object-oriented code, ideally using a test-driven or test-first approach.
+2. Write unit tests that achieve 100% line coverage. Name tests so that the testdox output of PHPUnit shows an executable specification of all business rules. Make sure every test has suitable @covers annotations.
+3. Make sure application and domain logic are clearly separated. Do not write any persistence code, and do not write presentation code. We strongly suggest not to use any frameworks or libraries.
+4. It is not important to deliver all features. Focus on the features with the highest business value and implement them first. Make sure that you deliver a working solution with features that are fully done. Consider using version control to ensure that you do not deliver anything that is uncompleted.
+5. Only implement required features. Do not implement anything additional that has not been asked for.
