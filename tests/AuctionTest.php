@@ -15,17 +15,18 @@ class AuctionTest extends TestCase
      */
     public function testHasTitleAndDescription($actual, $expected)
     {
-        $auction = new Auction($actual['title']);
+        $auction = new Auction($actual['title'], $actual['description']);
         
         $this->assertSame($expected['title'], $auction->title());
+        $this->assertSame($expected['description'], $auction->description());
     }
 
     public function dataProvider()
     {
         return [
             [
-                ['title' => 'testTitle'],
-                ['title' => 'testTitle']
+                ['title' => 'testTitle', 'description' => 'testDescription'],
+                ['title' => 'testTitle', 'description' => 'testDescription']
             ]
         ];
     }
