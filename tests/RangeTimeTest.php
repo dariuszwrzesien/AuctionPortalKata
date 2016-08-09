@@ -31,6 +31,15 @@ class RangeTimeTest extends TestCase
         new RangeTime(new DateTime('2016-01-02'), new DateTime('1999-01-01'));
     }
 
+    /**
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage Start date should be grater than end date
+     */
+    public function testIfStartDateEqualsEndDateThenThrowsException()
+    {
+        new RangeTime(new DateTime('2016-01-01'), new DateTime('2016-01-01'));
+    }
+
     public function dataProvider()
     {
         return [
