@@ -22,6 +22,15 @@ class RangeTimeTest extends TestCase
         $this->assertSame($expected['endDate'], $rangeTime->endDate()->format('Y-m-d'));
     }
 
+    /**
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage Start date should be grater than end date
+     */
+    public function testIfStartDateGreaterThenEndDateThenThrowsException()
+    {
+        new RangeTime(new DateTime('2016-01-02'), new DateTime('1999-01-01'));
+    }
+
     public function dataProvider()
     {
         return [

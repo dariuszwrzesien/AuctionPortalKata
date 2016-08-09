@@ -3,6 +3,7 @@
 namespace FP\Kata;
 
 use DateTime;
+use InvalidArgumentException;
 
 class RangeTime
 {
@@ -11,8 +12,10 @@ class RangeTime
     
     public function __construct(DateTime $startDate, DateTime $endDate)
     {
-        $this->startDate = $startDate;
-        $this->endDate = $endDate;
+        if ($this->isValid($startDate, $endDate)) {
+            $this->startDate = $startDate;
+            $this->endDate = $endDate;
+        }
     }
     
     public function startDate() : DateTime
@@ -23,5 +26,14 @@ class RangeTime
     public function endDate() : DateTime
     {
         return $this->endDate;
+    }
+
+    private function isValid(DateTime $startDate, DateTime $endDate) : bool
+    {
+        if($startDate < $endDate) {
+            return true;
+        }
+
+        throw new InvalidArgumentException('Start date should be grater than end date');
     }
 }
