@@ -7,11 +7,27 @@ use PHPUnit\Framework\TestCase;
 
 class UserTest extends TestCase
 {
-    public function testHasNickname()
+    /**
+     * @param $actual
+     * @param $expected
+     *
+     * @dataProvider dataProvider
+     */
+    public function testHasNicknameAndEmail($actual, $expected)
     {
-        $nickname = 'AdrianPietka';
-        $user = new User($nickname);
+        $user = new User($actual['nickname'], $actual['email']);
         
-        $this->assertSame($nickname, $user->nickname());
+        $this->assertSame($expected['nickname'], $user->nickname());
+        $this->assertSame($expected['email'], $user->email());
+    }
+
+    public function dataProvider()
+    {
+        return [
+            [['nickname' => 'AdrianPietka', 'email' => 'apietka@futureprocessing.com'],
+                ['nickname' => 'AdrianPietka', 'email' => 'apietka@futureprocessing.com']],
+            [['nickname' => 'DariuszWrzesien', 'email' => 'dwrzesien@futureprocessing.com'],
+                ['nickname' => 'DariuszWrzesien', 'email' => 'dwrzesien@futureprocessing.com']]
+        ];
     }
 }
