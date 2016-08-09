@@ -24,10 +24,14 @@ class UserTest extends TestCase
     public function dataProvider()
     {
         return [
-            [['nickname' => 'AdrianPietka', 'email' => 'apietka@futureprocessing.com'],
-                ['nickname' => 'AdrianPietka', 'email' => 'apietka@futureprocessing.com']],
-            [['nickname' => 'DariuszWrzesien', 'email' => 'dwrzesien@futureprocessing.com'],
-                ['nickname' => 'DariuszWrzesien', 'email' => 'dwrzesien@futureprocessing.com']]
+            [
+                ['nickname' => 'AdrianPietka', 'email' => 'apietka@futureprocessing.com'],
+                ['nickname' => 'AdrianPietka', 'email' => 'apietka@futureprocessing.com']
+            ],
+            [
+                ['nickname' => 'DariuszWrzesien', 'email' => 'dwrzesien@futureprocessing.com'],
+                ['nickname' => 'DariuszWrzesien', 'email' => 'dwrzesien@futureprocessing.com']
+            ]
         ];
     }
 }
