@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use FP\Kata\User;
-use FP\Kata\Auction;
 use FP\Kata\RangeTime;
 use PHPUnit\Framework\TestCase;
 
@@ -13,7 +12,7 @@ class UserTest extends TestCase
      * @param $actual
      * @param $expected
      *
-     * @dataProvider dataProvider
+     * @dataProvider userProvider
      */
     public function testHasNicknameAndEmail($actual, $expected)
     {
@@ -23,7 +22,8 @@ class UserTest extends TestCase
         $this->assertSame($expected['email'], $user->email());
     }
 
-    public function testCreateAuction()
+
+    public function testCountAuction()
     {
         $user = new User('DariuszWrzesien', 'dwrzesien@future-processing.com');
         $user->createAuction(
@@ -45,7 +45,21 @@ class UserTest extends TestCase
         $this->assertCount(3, $user->auctions());
     }
 
-    public function dataProvider()
+    public function testCreateAuction()
+    {
+        $user = new User('DariuszWrzesien', 'dwrzesien@future-processing.com');
+
+        $user->createAuction(
+            'testTitle',
+            'testDescription',
+            new RangeTime(new DateTime('2016-01-01'), new DateTime('2016-01-02'))
+        );
+
+        $auctions = $user->auctions();
+        $this->assertInstanceOf('FP\Kata\Auction', $auctions[0]);
+    }
+
+    public function userProvider()
     {
         return [
             [
