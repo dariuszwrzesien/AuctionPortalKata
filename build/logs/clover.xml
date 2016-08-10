@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1470867303">
-  <project timestamp="1470867303">
+<coverage generated="1470867655">
+  <project timestamp="1470867655">
     <package name="FP\Kata">
       <file name="/var/www/AuctionPortalKata/src/Auction.php">
         <class name="Auction" namespace="FP\Kata">
