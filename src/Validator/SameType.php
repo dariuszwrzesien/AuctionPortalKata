@@ -29,7 +29,7 @@ class SameType extends AbstractValidator
             return true;
         }
 
-        $this->errors[] = self::TYPE_MESSAGE;
+        $this->error = self::TYPE_MESSAGE;
         return false;
     }
 
@@ -38,7 +38,7 @@ class SameType extends AbstractValidator
         if (count(array_unique($this->classes)) === 1) {
             return true;
         } else {
-            $this->errors[] = self::CLASS_MESSAGE;
+            $this->error = self::CLASS_MESSAGE;
             return false;
         }
     }

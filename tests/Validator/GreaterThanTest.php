@@ -22,11 +22,18 @@ class GreaterThanTest extends TestCase
     public function dataProvider()
     {
         return [
-            [['value' =>  1, 'minimum' =>   0], true],
-            [['value' =>  1, 'minimum' =>   0], true],
-            [['value' => -1, 'minimum' =>  -2], true],
-            [['value' =>  0, 'minimum' =>  10], false],
-            [['value' => -1, 'minimum' =>   0], false],
+            [['value' =>   1, 'minimum' =>    0], true],
+            [['value' =>   1, 'minimum' =>    0], true],
+            [['value' =>  -1, 'minimum' =>   -2], true],
+            [['value' => 1.1, 'minimum' =>  1.0], true],
+            [['value' => 1.1, 'minimum' =>    1], true],
+            [['value' =>   0, 'minimum' =>   10], false],
+            [['value' =>  -1, 'minimum' =>    0], false],
+            [['value' =>   1, 'minimum' =>    1], false],
+            [['value' =>   0, 'minimum' =>    0], false],
+
+            [['value' => new DateTime('2020-01-01'), 'minimum' => new DateTime()], true],
+            [['value' => new DateTime('2016-01-01'), 'minimum' => new DateTime('2016-01-01')], false],
         ];
     }
 }

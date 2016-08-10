@@ -4,17 +4,22 @@ namespace FP\Kata;
 
 use DateTime;
 use InvalidArgumentException;
+use FP\Kata\Validator\GreaterThan;
 
 class RangeTime
 {
     private $startDate;
     private $endDate;
-    
+
     public function __construct(DateTime $startDate, DateTime $endDate)
     {
-        if ($this->isValid($startDate, $endDate)) {
+        $greaterThan = new GreaterThan($endDate, $startDate);
+
+        if ($greaterThan->isValid()) {
             $this->startDate = $startDate;
             $this->endDate = $endDate;
+        } else {
+            throw new InvalidArgumentException($greaterThan->error());
         }
     }
     
@@ -26,14 +31,5 @@ class RangeTime
     public function endDate() : DateTime
     {
         return $this->endDate;
-    }
-
-    private function isValid(DateTime $startDate, DateTime $endDate) : bool
-    {
-        if($startDate < $endDate) {
-            return true;
-        }
-
-        throw new InvalidArgumentException('Start date should be greater than end date');
     }
 }

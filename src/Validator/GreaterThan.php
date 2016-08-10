@@ -4,7 +4,7 @@ namespace FP\Kata\Validator;
 
 class GreaterThan extends AbstractValidator
 {
-    const ERROR_MESSAGE = 'Value has to be greater than ';
+    const ERROR_MESSAGE = 'Value has to be greater than minimum value';
 
     private $value;
     private $minValue;
@@ -21,7 +21,7 @@ class GreaterThan extends AbstractValidator
             return true;
         }
 
-        $this->errors[] = self::ERROR_MESSAGE . $this->minValue;
+        $this->error = self::ERROR_MESSAGE;
         return false;
     }
 }

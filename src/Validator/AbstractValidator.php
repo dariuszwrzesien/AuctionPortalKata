@@ -4,12 +4,12 @@ namespace FP\Kata\Validator;
 
 abstract class AbstractValidator
 {
-    protected $errors;
+    protected $error;
 
     abstract public function isValid() : bool;
 
-    public function errors() : array
+    public function error() : string
     {
-        return is_array($this->errors) ? $this->errors : [];
+        return $this->error ? $this->error : [];
     }
 }

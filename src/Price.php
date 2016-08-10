@@ -14,10 +14,12 @@ class Price
 
     public function __construct(int $amount)
     {
-        $gtValidator = new GreaterThan($amount,  self::MINIMAL_AMOUNT);
+        $greaterThan = new GreaterThan($amount, self::MINIMAL_AMOUNT);
 
-        if ($gtValidator->isValid()) {
+        if ($greaterThan->isValid()) {
             $this->amount = $amount;
+        } else {
+            throw new InvalidArgumentException($greaterThan->error());
         }
     }
     
