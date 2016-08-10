@@ -2,7 +2,7 @@
 
 namespace FP\Kata;
 
-use InvalidArgumentException;
+use FP\Kata\Validator\GraterThan;
 
 class Price
 {
@@ -14,20 +14,13 @@ class Price
 
     public function __construct(int $amount)
     {
-        $this->amount = $amount;
+        if (GraterThan::isValid($amount, self::MINIMAL_AMOUNT)) {
+            $this->amount = $amount;
+        }
     }
     
     public function amount() : float
     {
         return round($this->amount/self::UNIT , self::DEFAULT_FRACTION);
-    }
-
-    public function isValid(int $amount)
-    {
-        if ($amount > self::MINIMAL_AMOUNT) {
-            return true;
-        }
-
-        throw new InvalidArgumentException('Price should be grater than ' . self::MINIMAL_AMOUNT);
     }
 }

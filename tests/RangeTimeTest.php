@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use DateTime;
 use FP\Kata\RangeTime;
 use PHPUnit\Framework\TestCase;
 
