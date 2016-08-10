@@ -6,7 +6,8 @@ class User
 {
     private $nickname;
     private $email;
-    
+    private $auctions;
+
     public function __construct(string $nickname, string $email)
     {
         $this->nickname = $nickname;
@@ -21,5 +22,10 @@ class User
     public function email() : string
     {
         return $this->email;
+    }
+
+    public function createAuction(string $title, string $description, RangeTime $rangeTime)
+    {
+        $this->auctions[] = new Auction($title, $description, $rangeTime, $this);
     }
 }
