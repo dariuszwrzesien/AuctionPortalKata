@@ -34,6 +34,6 @@ class RangeTime
             return true;
         }
 
-        throw new InvalidArgumentException('Start date should be grater than end date');
+        throw new InvalidArgumentException('Start date should be greater than end date');
     }
 }

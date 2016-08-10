@@ -21,14 +21,14 @@ class PriceTest extends TestCase
         $this->assertSame($expected, $price->amount());
     }
 
-    /**
-     * @expectedException InvalidArgumentException
-     * @expectedExceptionMessage Value has to be grater than 0
-     */
-    public function testIfPriceEqualsMinimumAmountThenThrowException()
-    {
-        new Price(Price::MINIMAL_AMOUNT);
-    }
+//    /**
+//     * @expectedException InvalidArgumentException
+//     * @expectedExceptionMessage Value has to be grater than 0
+//     */
+//    public function testIfPriceEqualsMinimumAmountThenThrowException()
+//    {
+//        new Price(Price::MINIMAL_AMOUNT);
+//    }
 
     public function dataProvider()
     {

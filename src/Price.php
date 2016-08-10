@@ -2,7 +2,7 @@
 
 namespace FP\Kata;
 
-use FP\Kata\Validator\GraterThan;
+use FP\Kata\Validator\GreaterThan;
 
 class Price
 {
@@ -14,7 +14,9 @@ class Price
 
     public function __construct(int $amount)
     {
-        if (GraterThan::isValid($amount, self::MINIMAL_AMOUNT)) {
+        $gtValidator = new GreaterThan($amount,  self::MINIMAL_AMOUNT);
+
+        if ($gtValidator->isValid()) {
             $this->amount = $amount;
         }
     }

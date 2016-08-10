@@ -23,7 +23,7 @@ class RangeTimeTest extends TestCase
 
     /**
      * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage Start date should be grater than end date
+     * @expectedExceptionMessage Start date should be greater than end date
      */
     public function testIfStartDateGreaterThenEndDateThenThrowsException()
     {
@@ -32,7 +32,7 @@ class RangeTimeTest extends TestCase
 
     /**
      * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage Start date should be grater than end date
+     * @expectedExceptionMessage Start date should be greater than end date
      */
     public function testIfStartDateEqualsEndDateThenThrowsException()
     {
