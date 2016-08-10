@@ -2,9 +2,12 @@ sudo: required
 language: php
 php:
 - 7.0
-before_script:
-- curl -s http://getcomposer.org/installer | php
-- php composer.phar install --dev
-script: phpunit -c .
-after_script:
-- php vendor/bin/coveralls
+install:
+  - curl -s http://getcomposer.org/installer | php
+  - php composer.phar install --dev --no-interaction
+script:
+  - mkdir -p build/logs
+  - php vendor/bin/phpunit -c phpunit.xml.dist
+
+after_success:
+  - travis_retry php vendor/bin/coveralls
