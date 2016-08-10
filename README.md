@@ -1,4 +1,6 @@
-# FP PHP Kata 1 
+[![Coverage Status](https://coveralls.io/repos/github/dariuszwrzesien/AuctionPortalKata/badge.svg?branch=master)](https://coveralls.io/github/dariuszwrzesien/AuctionPortalKata?branch=master)
+
+# FP PHP Kata 1
 
 *Online Auctions (via IPC Berlin 2015)*
 
