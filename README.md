@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/dariuszwrzesien/AuctionPortalKata.svg?branch=master)](https://travis-ci.org/dariuszwrzesien/AuctionPortalKata)
 [![Coverage Status](https://coveralls.io/repos/github/dariuszwrzesien/AuctionPortalKata/badge.svg?branch=master)](https://coveralls.io/github/dariuszwrzesien/AuctionPortalKata?branch=master)
 
 # FP PHP Kata 1
