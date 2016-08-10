@@ -9,7 +9,7 @@
         }
     ],
     "scripts": {
-        "tests": "php vendor/phpunit/phpunit/phpunit --configuration /phpunit.xml"
+        "tests": "php vendor/phpunit/phpunit/phpunit --configuration phpunit.xml"
     },
     "autoload": {
         "psr-4": {"FP\\Kata\\": "src/"}
