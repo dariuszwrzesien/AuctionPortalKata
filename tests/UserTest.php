@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use FP\Kata\Auction;
 use FP\Kata\Price;
 use FP\Kata\User;
 use FP\Kata\RangeTime;
@@ -61,6 +62,39 @@ class UserTest extends TestCase
 
         $auctions = $user->auctions();
         $this->assertInstanceOf('FP\Kata\Auction', $auctions[0]);
+    }
+
+    public function testCreateOffer()
+    {
+        $user = new User('DariuszWrzesien', 'dwrzesien@future-processing.com');
+
+        $price = 777;
+        $newPrice = 888;
+
+        $auction = new Auction(
+            'testTitle',
+            'testDescription',
+            new RangeTime(new DateTime('2016-01-01'), new DateTime('2016-01-03')),
+            new Price($price),
+            new User('Owner1', 'owner1@future-processing.com')
+        );
+
+        $user->createOffer(
+            $auction,
+            new Price($newPrice)
+        );
+
+        $user->createOffer(
+            $auction,
+            new Price($newPrice + 10)
+        );
+
+        $user->createOffer(
+            $auction,
+            new Price($newPrice + 20)
+        );
+
+        $this->assertCount(3, $auction->offers());
     }
 
     public function userProvider()

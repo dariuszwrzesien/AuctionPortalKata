@@ -12,6 +12,8 @@ class Auction
     private $price;
     private $owner;
 
+    private $offers = array();
+
     public function __construct(string $title, string $description, RangeTime $rangeTime, Price $price, User $owner)
     {
         $this->title = $title;
@@ -51,5 +53,13 @@ class Auction
         return $this->owner;
     }
 
+    public function offers() : array
+    {
+        return $this->offers;
+    }
 
+    public function bid(Price $price, User $user)
+    {
+        $this->offers[] = [$price, $user];
+    }
 }

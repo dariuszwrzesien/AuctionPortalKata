@@ -39,4 +39,9 @@ class User
             $this
         );
     }
+
+    public function createOffer(Auction $auction, Price $price)
+    {
+        $auction->bid($price, $this);
+    }
 }
