@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use FP\Kata\Auction;
+use FP\Kata\Price;
 use FP\Kata\RangeTime;
 use FP\Kata\User;
 use PHPUnit\Framework\TestCase;
@@ -17,7 +18,13 @@ class AuctionTest extends TestCase
      */
     public function testHasTitleAndDescription($actual, $expected)
     {
-        $auction = new Auction($actual['title'], $actual['description'], $actual['rangeTime'], $actual['owner']);
+        $auction = new Auction(
+            $actual['title'],
+            $actual['description'],
+            $actual['rangeTime'],
+            $actual['price'],
+            $actual['owner']
+        );
         
         $this->assertSame($expected['title'], $auction->title());
         $this->assertSame($expected['description'], $auction->description());
@@ -31,7 +38,13 @@ class AuctionTest extends TestCase
      */
     public function testHasStartAndEndDate($actual, $expected)
     {
-        $auction = new Auction($actual['title'], $actual['description'], $actual['rangeTime'], $actual['owner']);
+        $auction = new Auction(
+            $actual['title'],
+            $actual['description'],
+            $actual['rangeTime'],
+            $actual['price'],
+            $actual['owner']
+        );
 
         $this->assertSame($expected['startDate'], $auction->startDate()->format('Y-m-d'));
         $this->assertSame($expected['endDate'], $auction->endDate()->format('Y-m-d'));
@@ -43,9 +56,50 @@ class AuctionTest extends TestCase
      *
      * @dataProvider dataProvider
      */
-    public function testHasUser($actual, $expected)
+    public function testHasInstanceOfPrice($actual, $expected)
     {
-        $auction = new Auction($actual['title'], $actual['description'], $actual['rangeTime'], $actual['owner']);
+        $auction = new Auction(
+            $actual['title'],
+            $actual['description'],
+            $actual['rangeTime'],
+            $actual['price'],
+            $actual['owner']
+        );
+
+        $this->assertInstanceOf($expected['priceClass'], $auction->price());
+    }
+
+    public function testIfPriceIsReturnedCorrectly()
+    {
+        $regularPrice = 10.99;
+        $centsPrice = (int)($regularPrice * 100);
+
+        $auction = new Auction(
+            'testTitle',
+            'testDescription',
+            new RangeTime(new DateTime('2016-01-01'), new DateTime('2016-01-02')),
+            new Price($centsPrice),
+            new User('testUserName', 'testUserEmail@future-processing.com')
+        );
+
+        $this->assertSame($regularPrice, $auction->price()->amount());
+    }
+
+    /**
+     * @param $actual
+     * @param $expected
+     *
+     * @dataProvider dataProvider
+     */
+    public function testHasInstanceOfUserAsOwner($actual, $expected)
+    {
+        $auction = new Auction(
+            $actual['title'],
+            $actual['description'],
+            $actual['rangeTime'],
+            $actual['price'],
+            $actual['owner']
+        );
 
         $this->assertInstanceOf($expected['owner'], $auction->owner());
     }
@@ -57,8 +111,11 @@ class AuctionTest extends TestCase
         $endDate = '2016-01-02';
         $rageTime = new RangeTime(new DateTime($startDate), new DateTime($endDate));
 
+        $centsPrice = (int)(10.99 * 100);
+        $price = new Price($centsPrice);
+
         $nickname = 'testUserName';
-        $email = 'testUserEmail@futureprocessing.com';
+        $email = 'testUserEmail@future-processing.com';
         $owner = new User($nickname, $email);
 
         return [
@@ -67,6 +124,7 @@ class AuctionTest extends TestCase
                     'title' => 'testTitle',
                     'description' => 'testDescription',
                     'rangeTime' => $rageTime,
+                    'price' => $price,
                     'owner' => $owner
                 ],
                 [
@@ -74,6 +132,8 @@ class AuctionTest extends TestCase
                     'description' => 'testDescription',
                     'startDate' => $startDate,
                     'endDate' => $endDate,
+                    'price' => $price,
+                    'priceClass' => 'FP\Kata\Price',
                     'owner' => 'FP\Kata\User'
                 ]
             ]

@@ -9,13 +9,15 @@ class Auction
     private $title;
     private $description;
     private $rangeTime;
+    private $price;
     private $owner;
 
-    public function __construct(string $title, string $description, RangeTime $rangeTime, User $owner)
+    public function __construct(string $title, string $description, RangeTime $rangeTime, Price $price, User $owner)
     {
         $this->title = $title;
         $this->description = $description;
         $this->rangeTime = $rangeTime;
+        $this->price = $price;
         $this->owner = $owner;
     }
     
@@ -37,6 +39,11 @@ class Auction
     public function endDate() : DateTime
     {
         return $this->rangeTime->endDate();
+    }
+
+    public function price() : Price
+    {
+        return $this->price;
     }
 
     public function owner() : User

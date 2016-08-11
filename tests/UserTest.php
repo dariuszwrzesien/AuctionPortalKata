@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use FP\Kata\Price;
 use FP\Kata\User;
 use FP\Kata\RangeTime;
 use PHPUnit\Framework\TestCase;
@@ -22,24 +23,26 @@ class UserTest extends TestCase
         $this->assertSame($expected['email'], $user->email());
     }
 
-
     public function testCountAuction()
     {
         $user = new User('DariuszWrzesien', 'dwrzesien@future-processing.com');
         $user->createAuction(
             'testTitle',
             'testDescription',
-            new RangeTime(new DateTime('2016-01-01'), new DateTime('2016-01-02'))
+            new RangeTime(new DateTime('2016-01-01'), new DateTime('2016-01-02')),
+            new Price(888)
         );
         $user->createAuction(
             'testTitle2',
             'testDescription2',
-            new RangeTime(new DateTime('2016-01-02'), new DateTime('2016-01-03'))
+            new RangeTime(new DateTime('2016-01-02'), new DateTime('2016-01-03')),
+            new Price(999)
         );
         $user->createAuction(
             'testTitle3',
             'testDescription3',
-            new RangeTime(new DateTime('2016-01-03'), new DateTime('2016-01-04'))
+            new RangeTime(new DateTime('2016-01-03'), new DateTime('2016-01-04')),
+            new Price(1099)
         );
 
         $this->assertCount(3, $user->auctions());
@@ -52,7 +55,8 @@ class UserTest extends TestCase
         $user->createAuction(
             'testTitle',
             'testDescription',
-            new RangeTime(new DateTime('2016-01-01'), new DateTime('2016-01-02'))
+            new RangeTime(new DateTime('2016-01-01'), new DateTime('2016-01-02')),
+            new Price(1099)
         );
 
         $auctions = $user->auctions();

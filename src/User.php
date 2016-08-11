@@ -29,8 +29,14 @@ class User
         return $this->auctions;
     }
 
-    public function createAuction(string $title, string $description, RangeTime $rangeTime)
+    public function createAuction(string $title, string $description, RangeTime $rangeTime, Price $price)
     {
-        $this->auctions[] = new Auction($title, $description, $rangeTime, $this);
+        $this->auctions[] = new Auction(
+            $title,
+            $description,
+            $rangeTime,
+            $price,
+            $this
+        );
     }
 }
