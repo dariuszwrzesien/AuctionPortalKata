@@ -17,7 +17,7 @@ class AuctionTest extends TestCase
      */
     public function testHasTitleAndDescription($actual, $expected)
     {
-        $auction = new Auction($actual['title'], $actual['description'], $actual['rangeTime'], $actual['user']);
+        $auction = new Auction($actual['title'], $actual['description'], $actual['rangeTime'], $actual['owner']);
         
         $this->assertSame($expected['title'], $auction->title());
         $this->assertSame($expected['description'], $auction->description());
@@ -31,7 +31,7 @@ class AuctionTest extends TestCase
      */
     public function testHasStartAndEndDate($actual, $expected)
     {
-        $auction = new Auction($actual['title'], $actual['description'], $actual['rangeTime'], $actual['user']);
+        $auction = new Auction($actual['title'], $actual['description'], $actual['rangeTime'], $actual['owner']);
 
         $this->assertSame($expected['startDate'], $auction->startDate()->format('Y-m-d'));
         $this->assertSame($expected['endDate'], $auction->endDate()->format('Y-m-d'));
@@ -45,9 +45,9 @@ class AuctionTest extends TestCase
      */
     public function testHasUser($actual, $expected)
     {
-        $auction = new Auction($actual['title'], $actual['description'], $actual['rangeTime'], $actual['user']);
+        $auction = new Auction($actual['title'], $actual['description'], $actual['rangeTime'], $actual['owner']);
 
-        $this->assertInstanceOf($expected['user'], $auction->user());
+        $this->assertInstanceOf($expected['owner'], $auction->owner());
     }
 
 
@@ -57,9 +57,9 @@ class AuctionTest extends TestCase
         $endDate = '2016-01-02';
         $rageTime = new RangeTime(new DateTime($startDate), new DateTime($endDate));
 
-        $name = 'testUserName';
+        $nickname = 'testUserName';
         $email = 'testUserEmail@futureprocessing.com';
-        $user = new User($name, $email);
+        $owner = new User($nickname, $email);
 
         return [
             [
@@ -67,14 +67,14 @@ class AuctionTest extends TestCase
                     'title' => 'testTitle',
                     'description' => 'testDescription',
                     'rangeTime' => $rageTime,
-                    'user' => $user
+                    'owner' => $owner
                 ],
                 [
                     'title' => 'testTitle',
                     'description' => 'testDescription',
                     'startDate' => $startDate,
                     'endDate' => $endDate,
-                    'user' => 'FP\Kata\User'
+                    'owner' => 'FP\Kata\User'
                 ]
             ]
         ];
