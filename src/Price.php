@@ -2,6 +2,7 @@
 
 namespace FP\Kata;
 
+use InvalidArgumentException;
 use FP\Kata\Validator\GreaterThan;
 
 class Price
