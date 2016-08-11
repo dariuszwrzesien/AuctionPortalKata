@@ -61,5 +61,9 @@ class Auction
     public function bid(Price $price, User $user)
     {
         $this->offers[] = [$price, $user];
+
+        if ($price->amount() > $this->price->amount()) {
+            $this->price = $price;
+        }
     }
 }

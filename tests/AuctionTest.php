@@ -104,6 +104,41 @@ class AuctionTest extends TestCase
         $this->assertInstanceOf($expected['owner'], $auction->owner());
     }
 
+    public function testBidOfferAndCountAfterBid()
+    {
+        $price = 9.99;
+        $centsPrice = (int)($price * 100);
+
+        $user = new User('testNickname', 'test@future-processing.com');
+
+        $auction = new Auction(
+            'testTitle',
+            'testDescription',
+            new RangeTime(new DateTime('2016-01-01'), new DateTime('2016-01-02')),
+            new Price($centsPrice),
+            new User('testUserName', 'testUserEmail@future-processing.com')
+        );
+
+        $newPrice = 10.99;
+        $newCentsPrice = (int)($newPrice * 100);
+
+        $auction->bid(new Price($newCentsPrice), $user);
+        $this->assertSame($newPrice, $auction->price()->amount());
+
+        $newPrice = 100.99;
+        $newCentsPrice = (int)($newPrice * 100);
+
+        $auction->bid(new Price($newCentsPrice), $user);
+        $this->assertSame($newPrice, $auction->price()->amount());
+
+        $newPrice = 999.99;
+        $newCentsPrice = (int)($newPrice * 100);
+
+        $auction->bid(new Price($newCentsPrice), $user);
+        $this->assertSame($newPrice, $auction->price()->amount());
+
+        $this->assertCount(3, $auction->offers());
+    }
 
     public function dataProvider()
     {

@@ -68,33 +68,41 @@ class UserTest extends TestCase
     {
         $user = new User('DariuszWrzesien', 'dwrzesien@future-processing.com');
 
-        $price = 777;
-        $newPrice = 888;
+        $price = 7.77;
+        $centsPrice = (int)($price * 100);
 
         $auction = new Auction(
             'testTitle',
             'testDescription',
             new RangeTime(new DateTime('2016-01-01'), new DateTime('2016-01-03')),
-            new Price($price),
+            new Price($centsPrice),
             new User('Owner1', 'owner1@future-processing.com')
         );
 
         $user->createOffer(
             $auction,
-            new Price($newPrice)
+            new Price($centsPrice + 100)
         );
+
+        $this->assertCount(1, $auction->offers());
+        $this->assertSame($price + 1, $auction->price()->amount());
 
         $user->createOffer(
             $auction,
-            new Price($newPrice + 10)
+            new Price($centsPrice + 200)
         );
+
+        $this->assertCount(2, $auction->offers());
+        $this->assertSame($price + 2, $auction->price()->amount());
 
         $user->createOffer(
             $auction,
-            new Price($newPrice + 20)
+            new Price($centsPrice + 300)
         );
 
         $this->assertCount(3, $auction->offers());
+        $this->assertSame($price + 3, $auction->price()->amount());
+
     }
 
     public function userProvider()
