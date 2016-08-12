@@ -40,8 +40,8 @@ class User
         );
     }
 
-    public function createOffer(Auction $auction, Price $price)
+    public function createOffer(Auction $auction, Price $price) : bool
     {
-        $auction->bid($price, $this);
+        return $auction->bid($price, $this);
     }
 }

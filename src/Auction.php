@@ -3,9 +3,12 @@
 namespace FP\Kata;
 
 use DateTime;
+use FP\Kata\Validator\GreaterThan;
 
 class Auction
 {
+    const MINIMAL_AMOUNT_DIFF = 1.00;
+
     private $title;
     private $description;
     private $rangeTime;
@@ -58,12 +61,15 @@ class Auction
         return $this->offers;
     }
 
-    public function bid(Price $price, User $user)
+    public function bid(Price $price, User $user) : bool
     {
-        $this->offers[] = [$price, $user];
+        $greaterThan = new GreaterThan($price->amount(), $this->price()->amount() + self::MINIMAL_AMOUNT_DIFF);
 
-        if ($price->amount() > $this->price->amount()) {
+        if ($greaterThan->isValid(GreaterThan::AND_EQUAL)) {
+            $this->offers[] = [$price, $user];
             $this->price = $price;
+            return true;
         }
+        return false;
     }
 }

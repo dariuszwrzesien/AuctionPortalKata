@@ -69,22 +69,6 @@ class AuctionTest extends TestCase
         $this->assertInstanceOf($expected['priceClass'], $auction->price());
     }
 
-    public function testIfPriceIsReturnedCorrectly()
-    {
-        $regularPrice = 10.99;
-        $centsPrice = (int)($regularPrice * 100);
-
-        $auction = new Auction(
-            'testTitle',
-            'testDescription',
-            new RangeTime(new DateTime('2016-01-01'), new DateTime('2016-01-02')),
-            new Price($centsPrice),
-            new User('testUserName', 'testUserEmail@future-processing.com')
-        );
-
-        $this->assertSame($regularPrice, $auction->price()->amount());
-    }
-
     /**
      * @param $actual
      * @param $expected
@@ -104,40 +88,62 @@ class AuctionTest extends TestCase
         $this->assertInstanceOf($expected['owner'], $auction->owner());
     }
 
-    public function testBidOfferAndCountAfterBid()
+    /**
+     * @param $actual
+     * @param $expected
+     *
+     * @dataProvider priceProvider
+     */
+    public function testBidOffer($actual, $expected)
     {
-        $price = 9.99;
-        $centsPrice = (int)($price * 100);
-
         $user = new User('testNickname', 'test@future-processing.com');
 
         $auction = new Auction(
             'testTitle',
             'testDescription',
             new RangeTime(new DateTime('2016-01-01'), new DateTime('2016-01-02')),
-            new Price($centsPrice),
+            new Price($actual['regularCentsPrice']),
             new User('testUserName', 'testUserEmail@future-processing.com')
         );
 
-        $newPrice = 10.99;
-        $newCentsPrice = (int)($newPrice * 100);
+        $auction->bid(new Price($actual['newCentsPrice']), $user);
+        $this->assertSame($expected['price'], $auction->price()->amount());
+    }
 
-        $auction->bid(new Price($newCentsPrice), $user);
-        $this->assertSame($newPrice, $auction->price()->amount());
+    public function testCountBiddenOffer()
+    {
+        $user = new User('testNickname', 'test@future-processing.com');
 
-        $newPrice = 100.99;
-        $newCentsPrice = (int)($newPrice * 100);
+        $auction = new Auction(
+            'testTitle',
+            'testDescription',
+            new RangeTime(new DateTime('2016-01-01'), new DateTime('2016-01-02')),
+            new Price(99),
+            new User('testUserName', 'testUserEmail@future-processing.com')
+        );
 
-        $auction->bid(new Price($newCentsPrice), $user);
-        $this->assertSame($newPrice, $auction->price()->amount());
-
-        $newPrice = 999.99;
-        $newCentsPrice = (int)($newPrice * 100);
-
-        $auction->bid(new Price($newCentsPrice), $user);
-        $this->assertSame($newPrice, $auction->price()->amount());
+        $auction->bid(new Price(199), $user);
+        $auction->bid(new Price(299), $user);
+        $auction->bid(new Price(399), $user);
 
         $this->assertCount(3, $auction->offers());
+    }
+
+
+    public function testBidIsOneOrMoreEurosHigherThanCurrentPrice()
+    {
+        $user = new User('testNickname', 'test@future-processing.com');
+
+        $auction = new Auction(
+            'testTitle',
+            'testDescription',
+            new RangeTime(new DateTime('2016-01-01'), new DateTime('2016-01-02')),
+            new Price(100),
+            new User('testUserName', 'testUserEmail@future-processing.com')
+        );
+
+        $this->assertTrue($user->createOffer($auction, new Price(200)));
+        $this->assertFalse($user->createOffer($auction, new Price(250)));
     }
 
     public function dataProvider()
@@ -171,6 +177,24 @@ class AuctionTest extends TestCase
                     'priceClass' => 'FP\Kata\Price',
                     'owner' => 'FP\Kata\User'
                 ]
+            ]
+        ];
+    }
+
+    public function priceProvider()
+    {
+        return [
+            [
+                ['regularPrice' => 1, 'regularCentsPrice' => 100, 'newPrice' => 2, 'newCentsPrice' => 200],
+                ['price' => 2.0, 'centsPrice' => 200, 'validation' => true]
+            ],
+            [
+                ['regularPrice' => 0.99, 'regularCentsPrice' => 99, 'newPrice' => 1.99, 'newCentsPrice' => 199],
+                ['price' => 1.99, 'centsPrice' => 199, 'validation' => true]
+            ],
+            [
+                ['regularPrice' => 10.99, 'regularCentsPrice' => 1099, 'newPrice' => 11.99, 'newCentsPrice' => 1199],
+                ['price' => 11.99, 'centsPrice' => 1199, 'validation' => true]
             ]
         ];
     }
