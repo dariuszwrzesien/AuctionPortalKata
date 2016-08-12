@@ -14,16 +14,27 @@ class Auction
     private $rangeTime;
     private $price;
     private $owner;
+    private $buyNowPrice;
 
     private $offers = array();
 
-    public function __construct(string $title, string $description, RangeTime $rangeTime, Price $price, User $owner)
+    public function __construct(
+        string $title,
+        string $description,
+        RangeTime $rangeTime,
+        Price $price,
+        User $owner,
+        Price $buyNowPrice = null)
     {
         $this->title = $title;
         $this->description = $description;
         $this->rangeTime = $rangeTime;
         $this->price = $price;
         $this->owner = $owner;
+
+        if ($buyNowPrice) {
+            $this->buyNowPrice = $this->setBuyNowPrice($buyNowPrice);
+        }
     }
     
     public function title() : string
@@ -71,5 +82,21 @@ class Auction
             return true;
         }
         return false;
+    }
+
+    public function buyNowPrice() : Price
+    {
+        return $this->buyNowPrice;
+    }
+
+    private function setBuyNowPrice(Price $buyNowPrice)
+    {
+        $greaterThan = new GreaterThan($buyNowPrice->amount(), $this->price()->amount());
+
+        if ($greaterThan->isValid()) {
+            return $buyNowPrice;
+        } else {
+            throw new InvalidArgumentException($greaterThan->error());
+        }
     }
 }

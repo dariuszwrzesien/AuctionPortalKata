@@ -129,7 +129,6 @@ class AuctionTest extends TestCase
         $this->assertCount(3, $auction->offers());
     }
 
-
     public function testBidIsOneOrMoreEurosHigherThanCurrentPrice()
     {
         $user = new User('testNickname', 'test@future-processing.com');
@@ -144,6 +143,23 @@ class AuctionTest extends TestCase
 
         $this->assertTrue($user->createOffer($auction, new Price(200)));
         $this->assertFalse($user->createOffer($auction, new Price(250)));
+    }
+
+    public function testHasBuyNow()
+    {
+        $buyNowPrice = 1.50;
+        $buyNowCentsPrice = (int)($buyNowPrice * 100);
+
+        $auction = new Auction(
+            'testTitle',
+            'testDescription',
+            new RangeTime(new DateTime('2016-01-01'), new DateTime('2016-01-02')),
+            new Price(100),
+            new User('testUserName', 'testUserEmail@future-processing.com'),
+            new Price($buyNowCentsPrice)
+        );
+
+        $this->assertSame($buyNowPrice, $auction->buyNowPrice()->amount());
     }
 
     public function dataProvider()
