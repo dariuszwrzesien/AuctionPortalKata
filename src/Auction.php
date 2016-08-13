@@ -3,6 +3,7 @@
 namespace FP\Kata;
 
 use DateTime;
+use InvalidArgumentException;
 use FP\Kata\Validator\GreaterThan;
 
 class Auction
@@ -24,8 +25,8 @@ class Auction
         RangeTime $rangeTime,
         Price $price,
         User $owner,
-        Price $buyNowPrice = null)
-    {
+        Price $buyNowPrice = null
+    ) {
         $this->title = $title;
         $this->description = $description;
         $this->rangeTime = $rangeTime;

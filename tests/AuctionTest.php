@@ -142,10 +142,11 @@ class AuctionTest extends TestCase
         );
 
         $this->assertTrue($user->createOffer($auction, new Price(200)));
-        $this->assertFalse($user->createOffer($auction, new Price(250)));
+        $this->assertTrue($user->createOffer($auction, new Price(350)));
+        $this->assertFalse($user->createOffer($auction, new Price(300)));
     }
 
-    public function testHasBuyNow()
+    public function testBuyNowPriceHasToBeHigherThanStartingPrice()
     {
         $buyNowPrice = 1.50;
         $buyNowCentsPrice = (int)($buyNowPrice * 100);
@@ -160,6 +161,25 @@ class AuctionTest extends TestCase
         );
 
         $this->assertSame($buyNowPrice, $auction->buyNowPrice()->amount());
+    }
+
+    /**
+     * @expectedException InvalidArgumentException
+     * @expectedExceptionMessage Value has to be greater than minimum value
+     */
+    public function testSetLowerBuyNowPriceThanStartingPriceReturnsException()
+    {
+        $buyNowPrice = 0.50;
+        $buyNowCentsPrice = (int)($buyNowPrice * 100);
+
+        new Auction(
+            'testTitle',
+            'testDescription',
+            new RangeTime(new DateTime('2016-01-01'), new DateTime('2016-01-02')),
+            new Price(100),
+            new User('testUserName', 'testUserEmail@future-processing.com'),
+            new Price($buyNowCentsPrice)
+        );
     }
 
     public function dataProvider()
