@@ -8,6 +8,9 @@ use FP\Kata\Validator\GreaterThan;
 
 class Auction
 {
+    const ACTIVE = true;
+    const FINISHED = false;
+
     const MINIMAL_AMOUNT_DIFF = 1.00;
 
     private $title;
@@ -16,8 +19,10 @@ class Auction
     private $price;
     private $owner;
     private $buyNowPrice;
+    private $status;
 
     private $offers = array();
+    private $winner;
 
     public function __construct(
         string $title,
@@ -36,6 +41,8 @@ class Auction
         if ($buyNowPrice) {
             $this->buyNowPrice = $this->setBuyNowPrice($buyNowPrice);
         }
+
+        $this->status = self::ACTIVE;
     }
     
     public function title() : string
@@ -88,6 +95,17 @@ class Auction
     public function buyNowPrice() : Price
     {
         return $this->buyNowPrice;
+    }
+
+    public function buyNow(User $user)
+    {
+        $this->winner = $user;
+        $this->status = self::FINISHED;
+    }
+
+    public function isActive() : bool
+    {
+        return $this->status;
     }
 
     private function setBuyNowPrice(Price $buyNowPrice)

@@ -182,6 +182,23 @@ class AuctionTest extends TestCase
         );
     }
 
+    public function testBuyNowFinishesAuction()
+    {
+        $auction = new Auction(
+            'testTitle',
+            'testDescription',
+            new RangeTime(new DateTime('2016-01-01'), new DateTime('2016-01-02')),
+            new Price(100),
+            new User('testUserName', 'testUserEmail@future-processing.com'),
+            new Price(101)
+        );
+
+        $this->assertTrue($auction->isActive());
+
+        $auction->buyNow(new User('testNickname', 'test@future-processing.com'));
+        $this->assertFalse($auction->isActive());
+    }
+
     public function dataProvider()
     {
         $startDate = '2016-01-01';
