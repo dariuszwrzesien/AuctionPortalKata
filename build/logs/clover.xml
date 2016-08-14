@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1471113497">
-  <project timestamp="1471113497">
+<coverage generated="1471198460">
+  <project timestamp="1471198460">
     <package name="FP\Kata">
       <file name="/var/www/AuctionPortalKata/src/Auction.php">
         <class name="Auction" namespace="FP\Kata">
-          <metrics complexity="16" methods="13" coveredmethods="13" conditionals="0" coveredconditionals="0" statements="31" coveredstatements="31" elements="44" coveredelements="44"/>
+          <metrics complexity="16" methods="13" coveredmethods="13" conditionals="0" coveredconditionals="0" statements="32" coveredstatements="32" elements="45" coveredelements="45"/>
         </class>
-        <line num="27" type="method" name="__construct" visibility="public" complexity="2" crap="2" count="15"/>
-        <line num="35" type="stmt" count="15"/>
-        <line num="36" type="stmt" count="15"/>
-        <line num="37" type="stmt" count="15"/>
-        <line num="38" type="stmt" count="15"/>
-        <line num="39" type="stmt" count="15"/>
-        <line num="41" type="stmt" count="15"/>
+        <line num="27" type="method" name="__construct" visibility="public" complexity="2" crap="2" count="16"/>
+        <line num="35" type="stmt" count="16"/>
+        <line num="36" type="stmt" count="16"/>
+        <line num="37" type="stmt" count="16"/>
+        <line num="38" type="stmt" count="16"/>
+        <line num="39" type="stmt" count="16"/>
+        <line num="41" type="stmt" count="16"/>
         <line num="42" type="stmt" count="3"/>
-        <line num="45" type="stmt" count="14"/>
-        <line num="46" type="stmt" count="14"/>
+        <line num="45" type="stmt" count="15"/>
+        <line num="46" type="stmt" count="15"/>
         <line num="48" type="method" name="title" visibility="public" complexity="1" crap="1" count="1"/>
         <line num="50" type="stmt" count="1"/>
         <line num="53" type="method" name="description" visibility="public" complexity="1" crap="1" count="1"/>
@@ -39,29 +39,30 @@
         <line num="92" type="stmt" count="1"/>
         <line num="95" type="method" name="buyNowPrice" visibility="public" complexity="1" crap="1" count="1"/>
         <line num="97" type="stmt" count="1"/>
-        <line num="100" type="method" name="buyNow" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="102" type="stmt" count="1"/>
-        <line num="103" type="stmt" count="1"/>
-        <line num="104" type="stmt" count="1"/>
-        <line num="106" type="method" name="isActive" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="108" type="stmt" count="1"/>
-        <line num="111" type="method" name="setBuyNowPrice" visibility="private" complexity="2" crap="2" count="3"/>
-        <line num="113" type="stmt" count="3"/>
-        <line num="115" type="stmt" count="3"/>
-        <line num="116" type="stmt" count="2"/>
-        <line num="118" type="stmt" count="1"/>
-        <metrics loc="121" ncloc="121" classes="1" methods="13" coveredmethods="13" conditionals="0" coveredconditionals="0" statements="31" coveredstatements="31" elements="44" coveredelements="44"/>
+        <line num="100" type="method" name="buyNow" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="102" type="stmt" count="2"/>
+        <line num="103" type="stmt" count="2"/>
+        <line num="104" type="stmt" count="2"/>
+        <line num="105" type="stmt" count="2"/>
+        <line num="107" type="method" name="isActive" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="109" type="stmt" count="1"/>
+        <line num="112" type="method" name="setBuyNowPrice" visibility="private" complexity="2" crap="2" count="3"/>
+        <line num="114" type="stmt" count="3"/>
+        <line num="116" type="stmt" count="3"/>
+        <line num="117" type="stmt" count="2"/>
+        <line num="119" type="stmt" count="1"/>
+        <metrics loc="122" ncloc="122" classes="1" methods="13" coveredmethods="13" conditionals="0" coveredconditionals="0" statements="32" coveredstatements="32" elements="45" coveredelements="45"/>
       </file>
       <file name="/var/www/AuctionPortalKata/src/Price.php">
         <class name="Price" namespace="FP\Kata">
           <metrics complexity="3" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="8" coveredelements="8"/>
         </class>
-        <line num="16" type="method" name="__construct" visibility="public" complexity="2" crap="2" count="19"/>
-        <line num="18" type="stmt" count="19"/>
-        <line num="20" type="stmt" count="19"/>
-        <line num="21" type="stmt" count="18"/>
+        <line num="16" type="method" name="__construct" visibility="public" complexity="2" crap="2" count="20"/>
+        <line num="18" type="stmt" count="20"/>
+        <line num="20" type="stmt" count="20"/>
+        <line num="21" type="stmt" count="19"/>
         <line num="23" type="stmt" count="1"/>
-        <line num="25" type="stmt" count="18"/>
+        <line num="25" type="stmt" count="19"/>
         <line num="27" type="method" name="amount" visibility="public" complexity="1" crap="1" count="16"/>
         <line num="29" type="stmt" count="16"/>
         <metrics loc="31" ncloc="31" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="8" coveredelements="8"/>
@@ -70,13 +71,13 @@
         <class name="RangeTime" namespace="FP\Kata">
           <metrics complexity="4" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="11" coveredelements="11"/>
         </class>
-        <line num="14" type="method" name="__construct" visibility="public" complexity="2" crap="2" count="14"/>
-        <line num="16" type="stmt" count="14"/>
-        <line num="18" type="stmt" count="14"/>
-        <line num="19" type="stmt" count="12"/>
-        <line num="20" type="stmt" count="12"/>
+        <line num="14" type="method" name="__construct" visibility="public" complexity="2" crap="2" count="15"/>
+        <line num="16" type="stmt" count="15"/>
+        <line num="18" type="stmt" count="15"/>
+        <line num="19" type="stmt" count="13"/>
+        <line num="20" type="stmt" count="13"/>
         <line num="22" type="stmt" count="2"/>
-        <line num="24" type="stmt" count="12"/>
+        <line num="24" type="stmt" count="13"/>
         <line num="26" type="method" name="startDate" visibility="public" complexity="1" crap="1" count="2"/>
         <line num="28" type="stmt" count="2"/>
         <line num="31" type="method" name="endDate" visibility="public" complexity="1" crap="1" count="2"/>
@@ -85,24 +86,29 @@
       </file>
       <file name="/var/www/AuctionPortalKata/src/User.php">
         <class name="User" namespace="FP\Kata">
-          <metrics complexity="6" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="9" elements="15" coveredelements="15"/>
+          <metrics complexity="8" methods="8" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="12" elements="20" coveredelements="20"/>
         </class>
-        <line num="11" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="13"/>
-        <line num="13" type="stmt" count="13"/>
-        <line num="14" type="stmt" count="13"/>
-        <line num="15" type="stmt" count="13"/>
-        <line num="17" type="method" name="nickname" visibility="public" complexity="1" crap="1" count="2"/>
-        <line num="19" type="stmt" count="2"/>
-        <line num="22" type="method" name="email" visibility="public" complexity="1" crap="1" count="2"/>
-        <line num="24" type="stmt" count="2"/>
-        <line num="27" type="method" name="auctions" visibility="public" complexity="1" crap="1" count="2"/>
-        <line num="29" type="stmt" count="2"/>
-        <line num="32" type="method" name="createAuction" visibility="public" complexity="1" crap="1" count="2"/>
-        <line num="34" type="stmt" count="2"/>
-        <line num="41" type="stmt" count="2"/>
-        <line num="43" type="method" name="createOffer" visibility="public" complexity="1" crap="1" count="2"/>
-        <line num="45" type="stmt" count="2"/>
-        <metrics loc="47" ncloc="47" classes="1" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="9" elements="15" coveredelements="15"/>
+        <line num="12" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="14"/>
+        <line num="14" type="stmt" count="14"/>
+        <line num="15" type="stmt" count="14"/>
+        <line num="16" type="stmt" count="14"/>
+        <line num="18" type="method" name="nickname" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="20" type="stmt" count="2"/>
+        <line num="23" type="method" name="email" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="25" type="stmt" count="2"/>
+        <line num="28" type="method" name="auctions" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="30" type="stmt" count="2"/>
+        <line num="33" type="method" name="createAuction" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="35" type="stmt" count="2"/>
+        <line num="42" type="stmt" count="2"/>
+        <line num="44" type="method" name="createOffer" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="46" type="stmt" count="2"/>
+        <line num="49" type="method" name="addArticle" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="51" type="stmt" count="2"/>
+        <line num="52" type="stmt" count="2"/>
+        <line num="54" type="method" name="articles" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="56" type="stmt" count="1"/>
+        <metrics loc="58" ncloc="58" classes="1" methods="8" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="12" elements="20" coveredelements="20"/>
       </file>
     </package>
     <package name="FP\Kata\Validator">
@@ -118,16 +124,16 @@
         <class name="GreaterThan" namespace="FP\Kata\Validator">
           <metrics complexity="5" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="10" elements="12" coveredelements="12"/>
         </class>
-        <line num="13" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="33"/>
-        <line num="15" type="stmt" count="33"/>
-        <line num="16" type="stmt" count="33"/>
-        <line num="17" type="stmt" count="33"/>
-        <line num="19" type="method" name="isValid" visibility="public" complexity="4" crap="4" count="33"/>
-        <line num="21" type="stmt" count="33"/>
+        <line num="13" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="34"/>
+        <line num="15" type="stmt" count="34"/>
+        <line num="16" type="stmt" count="34"/>
+        <line num="17" type="stmt" count="34"/>
+        <line num="19" type="method" name="isValid" visibility="public" complexity="4" crap="4" count="34"/>
+        <line num="21" type="stmt" count="34"/>
         <line num="22" type="stmt" count="6"/>
         <line num="23" type="stmt" count="6"/>
-        <line num="26" type="stmt" count="33"/>
-        <line num="27" type="stmt" count="25"/>
+        <line num="26" type="stmt" count="34"/>
+        <line num="27" type="stmt" count="26"/>
         <line num="32" type="stmt" count="10"/>
         <line num="34" type="stmt" count="10"/>
         <metrics loc="35" ncloc="35" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="10" elements="12" coveredelements="12"/>
@@ -157,6 +163,6 @@
         <metrics loc="44" ncloc="44" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="15" coveredstatements="15" elements="18" coveredelements="18"/>
       </file>
     </package>
-    <metrics files="7" loc="328" ncloc="328" classes="7" methods="30" coveredmethods="30" conditionals="0" coveredconditionals="0" statements="80" coveredstatements="80" elements="110" coveredelements="110"/>
+    <metrics files="7" loc="340" ncloc="340" classes="7" methods="32" coveredmethods="32" conditionals="0" coveredconditionals="0" statements="84" coveredstatements="84" elements="116" coveredelements="116"/>
   </project>
 </coverage>
