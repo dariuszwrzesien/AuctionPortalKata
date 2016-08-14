@@ -105,6 +105,44 @@ class UserTest extends TestCase
 
     }
 
+    public function testUserIsAbleToViewBoughtArticle()
+    {
+        $auction1 = new Auction(
+            'testTitle',
+            'testDescription',
+            new RangeTime(new DateTime('2016-01-01'), new DateTime('2016-01-03')),
+            new Price(150),
+            new User('Owner1', 'owner1@future-processing.com')
+        );
+
+        $auction2 = new Auction(
+            'testTitle2',
+            'testDescription2',
+            new RangeTime(new DateTime('2016-01-01'), new DateTime('2016-01-03')),
+            new Price(50),
+            new User('Owner2', 'owner2@future-processing.com')
+        );
+
+        $auction3 = new Auction(
+            'testTitle3',
+            'testDescription3',
+            new RangeTime(new DateTime('2016-01-01'), new DateTime('2016-01-03')),
+            new Price(500),
+            new User('Owner3', 'owner3@future-processing.com')
+        );
+
+        $user = new User('DariuszWrzesien', 'dwrzesien@future-processing.com');
+
+        $auction1->buyNow($user);
+        $auction2->buyNow($user);
+
+        $this->assertCount(2, $user->articles());
+
+        $auction3->buyNow($user);
+
+        $this->assertCount(3, $user->articles());
+    }
+
     public function userProvider()
     {
         return [

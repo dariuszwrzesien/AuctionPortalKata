@@ -101,6 +101,7 @@ class Auction
     {
         $this->winner = $user;
         $this->status = self::FINISHED;
+        $user->addArticle($this);
     }
 
     public function isActive() : bool

@@ -7,6 +7,7 @@ class User
     private $nickname;
     private $email;
     private $auctions = array();
+    private $articles = array();
 
     public function __construct(string $nickname, string $email)
     {
@@ -43,5 +44,15 @@ class User
     public function createOffer(Auction $auction, Price $price) : bool
     {
         return $auction->bid($price, $this);
+    }
+
+    public function addArticle(Auction $auction)
+    {
+        $this->articles[] = $auction;
+    }
+
+    public function articles() : array
+    {
+        return $this->articles;
     }
 }
