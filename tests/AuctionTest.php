@@ -217,6 +217,20 @@ class AuctionTest extends TestCase
         $this->assertTrue($auction->isExpired(new DateTime('2016-01-06')));
     }
 
+    public function testIfIsActiveReturnsExpiredWhenTheTimeIsUp()
+    {
+        $auction = new Auction(
+            'testTitle',
+            'testDescription',
+            new RangeTime(new DateTime('2016-01-01'), new DateTime('2016-01-05')),
+            new Price(100),
+            new User('testUserName', 'testUserEmail@future-processing.com'),
+            new Price(101)
+        );
+
+        $this->assertFalse($auction->isActive());
+    }
+
     public function dataProvider()
     {
         $now = new DateTime();
