@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1471277574">
-  <project timestamp="1471277574">
+<coverage generated="1471277680">
+  <project timestamp="1471277680">
     <package name="FP\Kata">
       <file name="/var/www/AuctionPortalKata/src/Auction.php">
         <class name="Auction" namespace="FP\Kata">
@@ -73,7 +73,7 @@
       </file>
       <file name="/var/www/AuctionPortalKata/src/RangeTime.php">
         <class name="RangeTime" namespace="FP\Kata">
-          <metrics complexity="7" methods="4" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="10" elements="15" coveredelements="13"/>
+          <metrics complexity="7" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="11" elements="15" coveredelements="15"/>
         </class>
         <line num="14" type="method" name="__construct" visibility="public" complexity="2" crap="2" count="16"/>
         <line num="16" type="stmt" count="16"/>
@@ -86,11 +86,11 @@
         <line num="28" type="stmt" count="2"/>
         <line num="31" type="method" name="endDate" visibility="public" complexity="1" crap="1" count="2"/>
         <line num="33" type="stmt" count="2"/>
-        <line num="36" type="method" name="isBetween" visibility="public" complexity="3" crap="3.33" count="2"/>
+        <line num="36" type="method" name="isBetween" visibility="public" complexity="3" crap="3" count="2"/>
         <line num="38" type="stmt" count="2"/>
         <line num="39" type="stmt" count="2"/>
-        <line num="42" type="stmt" count="0"/>
-        <metrics loc="44" ncloc="44" classes="1" methods="4" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="10" elements="15" coveredelements="13"/>
+        <line num="42" type="stmt" count="1"/>
+        <metrics loc="44" ncloc="44" classes="1" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="11" elements="15" coveredelements="15"/>
       </file>
       <file name="/var/www/AuctionPortalKata/src/User.php">
         <class name="User" namespace="FP\Kata">
@@ -147,6 +147,6 @@
         <metrics loc="35" ncloc="35" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="10" elements="12" coveredelements="12"/>
       </file>
     </package>
-    <metrics files="6" loc="314" ncloc="314" classes="6" methods="31" coveredmethods="29" conditionals="0" coveredconditionals="0" statements="75" coveredstatements="73" elements="106" coveredelements="102"/>
+    <metrics files="6" loc="314" ncloc="314" classes="6" methods="31" coveredmethods="30" conditionals="0" coveredconditionals="0" statements="75" coveredstatements="74" elements="106" coveredelements="104"/>
   </project>
 </coverage>
