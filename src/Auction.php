@@ -106,6 +106,10 @@ class Auction
 
     public function isActive() : bool
     {
+        if ($this->isExpired(new DateTime())) {
+            $this->status = false;
+        }
+
         return $this->status;
     }
 
@@ -118,5 +122,10 @@ class Auction
         } else {
             throw new InvalidArgumentException($greaterThan->error());
         }
+    }
+
+    public function isExpired(DateTime $today) : bool
+    {
+        return ! $this->rangeTime->isBetween($today);
     }
 }

@@ -32,4 +32,13 @@ class RangeTime
     {
         return $this->endDate;
     }
+
+    public function isBetween(DateTime $date) : bool
+    {
+        if ($date >= $this->startDate && $date <= $this->endDate) {
+            return true;
+        }
+
+        return false;
+    }
 }
