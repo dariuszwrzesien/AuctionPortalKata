@@ -6,6 +6,7 @@ class User
 {
     private $nickname;
     private $email;
+
     private $auctions = array();
     private $articles = array();
 

@@ -28,7 +28,6 @@ class GreaterThan extends AbstractValidator
             }
         }
 
-
         $this->error = self::ERROR_MESSAGE;
 
         return false;
